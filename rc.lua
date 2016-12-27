@@ -104,7 +104,6 @@ archmenu = require("archmenu")
 
 myawesomemenu = {
    { "application", xdgmenu },
-   { "jonathan", { {"term", terminal  }, {"term2", terminal }  } },
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
