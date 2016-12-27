@@ -126,6 +126,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
+---------
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
