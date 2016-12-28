@@ -38,7 +38,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 theme.wallpaper = "/home/jonathan/wallpaper/arch1.jpg"
 
 -- This is used later as the default terminal and editor to run.
@@ -130,6 +130,7 @@ mytextclock = awful.widget.textclock()
 ---------
 -- Create a wibox for each screen and add it
 mywibox = {}
+subwibox = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
@@ -197,7 +198,7 @@ for s = 1, screen.count() do
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s })
-
+    subwibox[s] = awful.wibox({ position = "bottom", screen = s })
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
     left_layout:add(mylauncher)
@@ -213,10 +214,13 @@ for s = 1, screen.count() do
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
     layout:set_left(left_layout)
-    layout:set_middle(mytasklist[s])
     layout:set_right(right_layout)
 
+    local sublayout = wibox.layout.align.horizontal()
+    sublayout:set_middle(mytasklist[s])
+
     mywibox[s]:set_widget(layout)
+    subwibox[s]:set_widget(sublayout)
 end
 -- }}}
 
